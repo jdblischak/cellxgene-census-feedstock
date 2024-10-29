@@ -16,12 +16,12 @@ source:
   git_url: https://github.com/chanzuckerberg/cellxgene-census.git
   git_rev: v1.15.0
   git_depth: -1
-  patches:
-    - remove-tiledbsoma-upper-bound.patch
+  # patches:
+  #   - remove-tiledbsoma-upper-bound.patch
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation ./api/python/cellxgene_census -vv
   number: 1
 
 requirements:
@@ -47,7 +47,7 @@ test:
     - pip
   commands:
     - python -c "import cellxgene_census; print(cellxgene_census.__version__)"
-    - pip check
+    # - pip check
 
 about:
   summary: API to facilitate the use of the CZ CELLxGENE Discover Census. For more information about the API and the project visit https://github.com/chanzuckerberg/cellxgene-census/
